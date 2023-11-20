@@ -299,7 +299,7 @@ class MultiVAE(nn.Module):
 
 
 DS = LFM1bDataset
-dt = DS("./Data/", item_mapper, user_mapper, target=["country"], split="train")
+dt = DS("./Data/", item_mapper, user_mapper, target=["country", "sex"], split="train")
 train_loader = torch.utils.data.DataLoader(
     dt,
     batch_size=500,
@@ -311,7 +311,7 @@ dt = DS(
     "./Data/",
     item_mapper,
     user_mapper,
-    target=["country"],
+    target=["country", "sex"],
     split="valid",
 )
 valid_loader = torch.utils.data.DataLoader(
@@ -771,7 +771,7 @@ model = MultiVAE(
     q_dims=[item_mapper.shape[0], 2000, 200],
     p_dims=[200, 2000, item_mapper.shape[0]],
     n_conditioned=0,
-    sensitive_attributes=["country"],  # only country for now
+    sensitive_attributes=["country", "sex"],  # only country and sex for now
 )
 # 3. optimizer
 optim = torch.optim.Adam(
@@ -823,6 +823,6 @@ trainer = Trainer(
     dataset_name="lfm2b",
     # alpha=0.5,
     base_dir="./Data/",
-    target=["country"],
+    target=["country","sex"],
 )
 trainer.train()
