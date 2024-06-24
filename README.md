@@ -1,3 +1,5 @@
-# F2VAE
+# F2VAE & new improved implementation
 
-Work is still in progress, being documented in **implementation_temp.ipynb** notebook.
+Source code in **implementation_temp.ipynb** notebook.
+The **main** branch refers to the improved implementation with the new classifier. 
+The **default_classifier** branch refers to the default implementation
